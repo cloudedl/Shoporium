@@ -57,12 +57,12 @@ Diagram to show which models will be linked in the final version.
 
 
 ## Technologies Used
-node.js
-express
-liquid
-stripe API
-dotenv
-bcrypt
-express-session
+node.js <br>
+express <br>
+liquid <br>
+stripe API <br>
+dotenv <br>
+bcrypt <br>
+express-session <br>
 
 
