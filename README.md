@@ -16,6 +16,9 @@
 5. tie shipping details with accounts so customer doesn't have to fill out form every time
 6. Post Checkout will display approx delivery day based off of todays date. 
 
+## User Story
+Customer will load the webiste seeing the different products available. Customer can view the individual products and their descriptions or add them directly to the cart from the main page. After the customer has found the products that interest them they can checkout. Customer will go through a checkout page and provide their details. Stripe API will process the fake transaction and determine if it was successful or not.
+
 
 ## Index Route
 ![index page](/imgs/index.jpg)
@@ -51,5 +54,15 @@ Customers will need to create a user account to checkout. The orders that they d
 ## Entity Relationship Diagram
 ![erd](/imgs/ERD.jpg)
 Diagram to show which models will be linked in the final version. 
+
+
+## Technologies Used
+node.js
+express
+liquid
+stripe API
+dotenv
+bcrypt
+express-session
 
 
