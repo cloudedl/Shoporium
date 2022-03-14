@@ -14,7 +14,8 @@
 3. Have an inventory system preventing ordering of Out of Stock items
 4. Have a comments section so customer's can review the product. 
 5. tie shipping details with accounts so customer doesn't have to fill out form every time
-6. Post Checkout will display approx delivery day based off of todays date. 
+6. Post Checkout will display approx delivery day based off of todays date.
+7. Checkout will utilize Stripe API 
 
 ## User Story
 Customer will load the webiste seeing the different products available. Customer can view the individual products and their descriptions or add them directly to the cart from the main page. After the customer has found the products that interest them they can checkout. Customer will go through a checkout page and provide their details. Stripe API will process the fake transaction and determine if it was successful or not.
