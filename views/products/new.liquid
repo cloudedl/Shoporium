@@ -1,0 +1,30 @@
+{% layout 'layout.liquid'%}
+
+{% block content %}
+    
+<form action="/products" method="POST">
+    <fieldset>
+
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Enter name">
+        <label>Image Link:</label>
+        <input type="text" name="image" placeholder="url to image">
+        <label>Description:</label>
+        <input type="text" name="description" placeholder="Short Description">
+        <label>Price:</label>
+        <input type="text" name="price" placeholder="Price">
+        <label>Inventory:</label>
+        <input type="text" name="qty" placeholder="How many in Stock">
+
+    </fieldset>
+    <input type="submit" value="Create">
+
+
+
+
+</form>
+
+    
+  
+
+{% endblock %}

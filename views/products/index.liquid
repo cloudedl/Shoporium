@@ -1,7 +1,12 @@
-{% layout 'layout.liquid' %}
-{% block content %}
-<div class="container-md">
+<!-- we're serving block content in layout.liquid -->
+<!-- so we need to inform all our blocks(files) -->
+{% layout 'layout.liquid'%}
 
+<!-- Start our block content -->
+{% block content %}
+    <h1>Products Page</h1>
+    
+    <div>
         {% for product in products %}
         
             <a href="/products/{{product.id}}"> <img src="{{product.img}}"></a>
@@ -11,5 +16,8 @@
             <p>Inventory: {{product.qty}}</p>
 
         {% endfor %}
-</div>
+
+        <a href="/products/new">Add a New Product</a>
+    </div>
+
 {% endblock %}

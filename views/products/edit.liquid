@@ -1,0 +1,30 @@
+{% layout 'layout.liquid'%}
+
+{% block content %}
+    
+<form action="/products/{{ product.id }}?_method=PUT" method="POST">
+    <fieldset>
+        <label>Name:</label>
+        <input type="text" name="name" value="{{product.name}}">
+        <label>Image Link:</label>
+        <input type="text" name="image" value="{{product.img}}">
+        <label>Description:</label>
+        <input type="text" name="description" value="{{product.description}}">
+        <label>Price:</label>
+        <input type="text" name="price" value="{{product.price}}">
+        <label>Inventory:</label>
+        <input type="text" name="qty" value="{{product.qty}}">
+
+
+    </fieldset>
+    <input type="submit" value="Confirm Changes">
+
+
+
+
+</form>
+
+    
+  
+
+{% endblock %}

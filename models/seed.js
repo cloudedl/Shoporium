@@ -16,7 +16,7 @@ db.on("open", () => {
 
   // Run any database queries in this function
     const startProducts = [
-        { 
+      { 
         name: 'Codex: Aeldari',
         description: 'Definitive guide to commanding the forces of the Aeldari',
         img: 'https://www.games-workshop.com/resources/catalog/product/920x950/60030104012_EngAELCodex01.jpg' ,
@@ -40,7 +40,7 @@ db.on("open", () => {
         {
         name: 'Dark Reapers',
         description: 'A peerless long-ranged Heavy Support choice for your Aeldari army',
-        img: '../imgs/Seed_Imgs/DarkReapers.webp' ,
+        img: '/imgs/Seed_Imgs/DarkReapers.webp' ,
         price: 60 ,
         qty: 15 ,
         },
