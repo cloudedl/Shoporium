@@ -1,6 +1,7 @@
 // Import Dependencies
 const express = require('express')
-const Shop = require('../models/shop')
+const { Store } = require('express-session')
+const Product = require('../models/product')
 
 // Create router
 const router = express.Router()
@@ -23,25 +24,25 @@ router.use((req, res, next) => {
 
 // index ALL
 router.get('/', (req, res) => {
-	Shop.find({})
-		.then(shops => {
+	Store.find({})
+		.then(store => {
 			const username = req.session.username
 			const loggedIn = req.session.loggedIn
 			
-			res.render('shops/index', { shops: shops, username, loggedIn })
+			res.render('store/index', { store: store, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
 
-// index that shows only the user's shops
+// index that shows only the user's store
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
-	Shop.find({ owner: userId })
-		.then(shops => {
-			res.render('shops/index', { shops: shops, username, loggedIn })
+	Store.find({ owner: userId })
+		.then(store => {
+			res.render('store/index', { store: store, username, loggedIn })
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -51,7 +52,7 @@ router.get('/mine', (req, res) => {
 // new route -> GET route that renders our page with the form
 router.get('/new', (req, res) => {
 	const { username, userId, loggedIn } = req.session
-	res.render('shops/new', { username, loggedIn })
+	res.render('store/new', { username, loggedIn })
 })
 
 // create -> POST route that actually calls the db and makes a new document
@@ -59,10 +60,10 @@ router.post('/', (req, res) => {
 	req.body.ready = req.body.ready === 'on' ? true : false
 
 	req.body.owner = req.session.userId
-	Shop.create(req.body)
-		.then(shop => {
-			console.log('this was returned from create', shop)
-			res.redirect('/shops')
+	Store.create(req.body)
+		.then(store => {
+			console.log('this was returned from create', store)
+			res.redirect('/store')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
@@ -72,10 +73,10 @@ router.post('/', (req, res) => {
 // edit route -> GET that takes us to the edit form view
 router.get('/:id/edit', (req, res) => {
 	// we need to get the id
-	const shopId = req.params.id
-	Shop.findById(shopId)
-		.then(shop => {
-			res.render('shops/edit', { shop: shop })
+	const storeId = req.params.id
+	Store.findById(storeId)
+		.then(store => {
+			res.render('store/edit', { store: store })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -84,12 +85,12 @@ router.get('/:id/edit', (req, res) => {
 
 // update route
 router.put('/:id', (req, res) => {
-	const shopId = req.params.id
+	const storeId = req.params.id
 	req.body.ready = req.body.ready === 'on' ? true : false
 
-	Shop.findByIdAndUpdate(shopId, req.body, { new: true })
-		.then(shop => {
-			res.redirect(`/shops/${shop.id}`)
+	Store.findByIdAndUpdate(storeId, req.body, { new: true })
+		.then(store => {
+			res.redirect(`/store/${store.id}`)
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -98,11 +99,11 @@ router.put('/:id', (req, res) => {
 
 // show route
 router.get('/:id', (req, res) => {
-	const shopId = req.params.id
-	Shop.findById(shopId)
-		.then(shop => {
+	const storeId = req.params.id
+	Store.findById(storeId)
+		.then(store => {
             const {username, loggedIn, userId} = req.session
-			res.render('shops/show', { shop: shop, username, loggedIn, userId })
+			res.render('store/show', { store: store, username, loggedIn, userId })
 		})
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
@@ -111,10 +112,10 @@ router.get('/:id', (req, res) => {
 
 // delete route
 router.delete('/:id', (req, res) => {
-	const shopId = req.params.id
-	Shop.findByIdAndRemove(shopId)
-		.then(shop => {
-			res.redirect('/shops')
+	const storeId = req.params.id
+	Store.findByIdAndRemove(storeId)
+		.then(store => {
+			res.redirect('/store')
 		})
 		.catch(error => {
 			res.redirect(`/error?error=${error}`)
