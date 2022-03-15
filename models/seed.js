@@ -59,12 +59,70 @@ db.on("open", () => {
         qty: 15
         },
         {
+          name: 'Warlocks',
+          description: 'A pair of Elite psychic warriors for your Aeldari army',
+          img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104066_AELWarlocksLead.jpg',
+          price: 55,
+          qty: 13
+          },
+        {
         name: 'Farseer',
         description: 'Powerful psyker HQ Choice for Aeldari armies',
         img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99070104001_EldarFarseer01.jpg',
         price: 32,
         qty: 4    
-        }
+        },
+        {
+        name: 'Windriders',
+        description: 'Windriders are jetbike pilots completely in tune with their machines.',
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104038_ELDARWINDRIDERS01.jpg',
+        price: 55,
+        qty: 3
+        },
+        {
+        name: 'Swooping Hawks',
+        description: 'The Swooping Hawks are the swift airborne support of the Aeldari warhost.',
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99810104010_SwoopingHawksNEW_01.jpg',
+        price: 45,
+        qty: 20
+        },
+        {
+        name: 'Wraithguard',
+        description: 'Possessing deadly long-ranged weaponry, Wraithguard are constructs made from wraithbone, imbued with the spirit stones of dead Aeldari.',
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104031_EldarWraithguard01.jpg',
+        price: 60,
+        qty: 15
+        },
+        {
+        name: 'WraithLord',
+        description: "Towering over its foes, the Wraithlord is controlled by the essence of one of the craftworld's mightiest warriors.",
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104013_WraithlordsNEW_01.jpg',
+        price: 60,
+        qty: 13
+        },
+        {
+        name: 'Spiritseer',
+        description: "Spiritseers are those upon the Witch Path who are called to commune with the dead; a chilling concept, even amongst the Asuryani.",
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99070104007_Spiritseer01.jpg',
+        price: 32,
+        qty: 16
+        },
+        {
+        name: 'Dire Avengers',
+        description: "The Dire Avengers are first amongst the Aspect Warriors of the Aeldari.",
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104033_DireAvengers01.jpg',
+        price: 38,
+        qty: 8
+        },
+        {
+        name: 'Craftworlds Wave Serpent',
+        description: "The Wave Serpent is the main troop carrier of a Craftworld's army.",
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104023_WaveSerpentNEW_01.jpg',
+        price: 60,
+        qty: 9
+        },
+          
+
     ]
 
   // Delete all products
