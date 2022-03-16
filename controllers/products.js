@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     Product.find({})
         // then render a template AFTER they're found
         .then(products => {
-            console.log(products)
+            // console.log(products)
             res.render('products/index.liquid', { products })
         })
         // show an error if there is one
@@ -41,7 +41,7 @@ router.post('/', (req, res) => {
   
     Product.create(req.body)
         .then(product => {
-            console.log('this was returned from create', product)
+            // console.log('this was returned from create', product)
             res.redirect('/products')
         })
         .catch(err => {

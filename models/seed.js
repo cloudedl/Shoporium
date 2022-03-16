@@ -5,6 +5,7 @@ const mongoose = require("./connection")
 const Product = require("./products")
 
 
+
 // save the connection in a variable
 const db = mongoose.connection
 
@@ -40,7 +41,7 @@ db.on("open", () => {
         {
         name: 'Dark Reapers',
         description: 'A peerless long-ranged Heavy Support choice for your Aeldari army',
-        img: '/imgs/Seed_Imgs/DarkReapers.webp' ,
+        img: '/static/imgs/seedImgs/DarkReapers.webp' ,
         price: 60 ,
         qty: 15 ,
         },

@@ -24,9 +24,12 @@ middleware(app)
 app.use('/auth', UserRouter)
 app.use('/products', ProdouctRouter)
 
+app.use('/static', express.static('imgs'))
+
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
-	res.render('index.liquid', { loggedIn, username, userId })
+	// res.render('index.liquid', { loggedIn, username, userId })
+	res.redirect('/products')
 })
 
 app.get('/error', (req, res) => {
