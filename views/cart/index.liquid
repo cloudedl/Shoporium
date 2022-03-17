@@ -1,8 +1,16 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-{{User.cartItems[1]}}
+<!-- {{user.cartItems}} -->
+{{user.cartItems[0].name}}
+<!-- {{user.cartItems.product.name[1]}} -->
 
+{% for cartItems in cartItems %}
+    <div>
+    {{cartItems.name}}
+    </div>
+
+{% endfor %}
 
 
 

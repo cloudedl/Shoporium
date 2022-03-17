@@ -26,10 +26,11 @@ router.get ('/', (req,res) => {
 
 
     User.findById(userId)
-        .populate()
+        .populate('cartItems')
         .then((user) => {
+            let cartItems = user.cartItems
             console.log('this is the user data we grabbed', user)
-            res.render('cart/index', {user, username, loggedIn, userId})
+            res.render('cart/index', {user, username, loggedIn, userId, cartItems})
 
         })
         	// if there is an error, show that instead
