@@ -1,5 +1,6 @@
 // import what I need
 const { Schema, model } = require('./connection.js')
+const mongoose = require('./connection')
 
 const cartSchema = ('./cart')
 
@@ -15,6 +16,10 @@ const UserSchema = new Schema(
 			type: String, 
 			required: true 
 		},
+		cartItems: [{ 
+			type: mongoose.Schema.Types.ObjectID,
+			ref: 'Product',
+		}]
 		
 	},
 	{ timestamps: true }

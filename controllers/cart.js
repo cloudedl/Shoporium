@@ -4,7 +4,7 @@
 const express = require('express')
 const { append } = require('express/lib/response')
 const mongoose = require('mongoose')
-const Cart = require('../models/cart')
+const User = require('../models/user')
 
 // we need our Fruit MODEL because comments are ONLY a schema
 // so we'll run queries on fruits, and add in comments
@@ -20,27 +20,45 @@ const router = express.Router()
 ////////////////////////////////////////////
 
 router.get ('/', (req,res) => {
-
+    const userId = req.session.userId
     const username = req.session.username
     const loggedIn = req.session.loggedIn
-    const userId = req.session.userId
-    res.render('cart/index', {Cart, username, loggedIn, userId})
+
+
+    User.findById(userId)
+        .populate()
+        .then((user) => {
+            console.log('this is the user data we grabbed', user)
+            res.render('cart/index', {user, username, loggedIn, userId})
+
+        })
+        	// if there is an error, show that instead
+		.catch((err) => {
+			console.log(err)
+			res.json({ err })
+		})
+
+
 
 })
 
 router.put('/:id', (req, res) => {
 
-    const productId = req.params.productId
-    req.session.cart = Cart
+    const productId = req.params.id
+    const userId = req.session.userId
+    // req.session.cart = Cart
+    console.log('what is cart', User)
     console.log('what is the productId', productId)
 
-    Cart.create(req.body)
-        .then(cart => {
+    User.findById(userId)
+        .then(user => {
             //send the product to the cartItems array
-            cart.cartItems.push(req.body)
-            return cart.save()
+            user.cartItems.push(productId)
+            console.log('what is user', user)
+            return user.save()
+            
         })
-        .then(cart => {
+        .then(user => {
             //redirect
             res.redirect('/cart')
         })
