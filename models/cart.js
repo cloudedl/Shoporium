@@ -3,22 +3,24 @@
 /////////////////////////////////
 const mongoose = require('./connection')
 
-// here's an alternate syntax for creating a schema
-// reminder: we do not need a model for a subdocument
-// all we need is a schema 
+const { Schema, model } = mongoose
+
 const cartSchema = new mongoose.Schema({
-    Product: [{ 
+    cartItems: [{ 
         type: mongoose.Schema.Types.ObjectID,
         ref: 'Product',
-        required: true
     }],
-    user: {
+    owner: {
         type: mongoose.Schema.Types.ObjectID,
-        ref: 'User',
-        required: true
-    }
+        ref: 'User'
+    },
+    purchased: {type: Boolean, default: false}
+
+    
 }, {
     timestamps: true
 })
 
-module.exports = cartSchema
+const Cart = model('Cart', cartSchema)
+
+module.exports = Cart

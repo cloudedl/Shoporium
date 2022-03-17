@@ -13,7 +13,7 @@
                 <a href="/products/{{product.id}}"><h3>{{product.name}}</h3></a>
                 <p>Description: {{product.description}}</p>
                 <p>${{product.price}}</p>
-                <a href="/cart/{{product.id}}"><button>Add to Cart</button></a>
+                <a href="/cart/{{product.id}}" action="/cart/{{ product.id }}?_method=PUT" method="POST"><button>Add to Cart</button></a>
                 <!-- <p>Inventory: {{product.qty}}</p> -->
 
             {% endfor %}
