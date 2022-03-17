@@ -8,8 +8,8 @@ const { Schema, model } = mongoose
 
 const productSchema = new Schema ({
     name: { type: String,required: true},
-    description: String,
-    img: {type: String, default: "https://cdn1.iconfinder.com/data/icons/business-company-1/500/image-512.png"},
+    description: {type: String, required: true},
+    img: {type: String, default: "https://cdn1.iconfinder.com/data/icons/business-company-1/500/image-512.png", required: true},
     price: {type: Number, requrired: true, min: 0},
     qty: {type: Number, requrired: true, min: 0}
     },

@@ -22,7 +22,10 @@ router.get('/', (req, res) => {
         // then render a template AFTER they're found
         .then(products => {
             // console.log(products)
-            res.render('products/index.liquid', { products })
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			const userId = req.session.userId
+            res.render('products/index.liquid', { products, username, loggedIn, userId })
         })
         // show an error if there is one
         .catch(error => {
@@ -123,7 +126,10 @@ router.get('/:id', (req, res) => {
     Product.findById(productId)
     // once found, we can render a view with the data
         .then(product => {
-            res.render('products/show', { product })
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			const userId = req.session.userId
+            res.render('products/show', { product, username, loggedIn, userId })
             // res.send('you have landed')
         })
     // if there is an error, show that instead

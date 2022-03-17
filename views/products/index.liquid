@@ -5,19 +5,20 @@
 <!-- Start our block content -->
 {% block content %}
     <h1>Products Page</h1>
-    
-    <div>
-        {% for product in products %}
-        
-            <a href="/products/{{product.id}}"> <img src="{{product.img}}"></a>
-            <a href="/products/{{product.id}}"><h3>{{product.name}}</h3></a>
-            <p>Description: {{product.description}}</p>
-            <p>${{product.price}}</p>
-            <p>Inventory: {{product.qty}}</p>
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            
+                <a href="/products/{{product.id}}"> <img src="{{product.img}}" class="img-thumbnail"></a>
+                <a href="/products/{{product.id}}"><h3>{{product.name}}</h3></a>
+                <p>Description: {{product.description}}</p>
+                <p>${{product.price}}</p>
+                <a href="/cart/{{product.id}}"><button>Add to Cart</button></a>
+                <!-- <p>Inventory: {{product.qty}}</p> -->
 
-        {% endfor %}
+            {% endfor %}
 
-        <a href="/products/new">Add a New Product</a>
+            <a href="/products/new">Add a New Product</a>
+        </div>
     </div>
-
 {% endblock %}

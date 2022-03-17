@@ -1,5 +1,7 @@
 // import what I need
-const { Schema, model, STATES } = require('./connection.js')
+const { Schema, model } = require('./connection.js')
+
+const cartSchema = ('./cart')
 
 // create the schema
 const UserSchema = new Schema(
@@ -13,14 +15,7 @@ const UserSchema = new Schema(
 			type: String, 
 			required: true 
 		},
-		shipping: {
-			name: {type: String},
-			address: {type: String},
-			city: {type: String},
-			state: {type: String},
-			postal: {type: String},
-			phone: {type: String}
-		}
+		cart: [cartSchema]
 	},
 	{ timestamps: true }
 )

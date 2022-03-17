@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
 
 				if (result) {
 					console.log('the user', user);
-
+					
 					// store some properties in the session
 					req.session.username = user.username
 					req.session.loggedIn = true
@@ -69,8 +69,8 @@ router.post('/login', async (req, res) => {
           			const { username, loggedIn, userId } = req.session
 
 					console.log('session user id', req.session.userId)
-					// redirect to /shop if login is successful
-					res.redirect('/products')
+					// redirect to /examples if login is successful
+					res.redirect('/')
 				} else {
 					// send an error if the password doesnt match
 					res.redirect('/error?error=username%20or%20password%20incorrect')

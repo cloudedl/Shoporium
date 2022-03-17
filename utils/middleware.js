@@ -16,13 +16,14 @@ const middleware = (app) => {
 	app.use(methodOverride('_method'))
 	app.use(express.urlencoded({ extended: false }))
 	app.use(express.static('public'))
-	app.use(express.static('imgs'))
 	app.use(
 		session({
 			secret: process.env.SECRET,
 			store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
-			saveUninitialized: true,
+			cookie: { maxAge: 180 * 60 * 1000},
+			saveUninitialized: false,
 			resave: false,
+
 		})
 	)
 }
