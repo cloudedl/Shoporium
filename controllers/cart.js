@@ -62,6 +62,19 @@ router.put('/:id', (req, res) => {
     console.log('what is cart', User)
     console.log('what is the productId', productId)
 
+    
+    // Product.findById(productId)
+    // // then render a template AFTER they're found
+    // .then(product => {
+    //     console.log(product)
+    //     Product.findByIdAndUpdate(productId, { qty: product.qty - 1 }, { new: true })
+    //         })
+    //         // if an error, display that
+    //         .catch(err => {
+    //             console.log(err)
+    //             res.json({ err })
+    //         })
+    // })
     User.findById(userId)
         .then(user => {
             //send the product to the cartItems array
@@ -70,15 +83,32 @@ router.put('/:id', (req, res) => {
             return user.save()
             
         })
+
+        
         .then(user => {
+            
             //redirect
-            res.redirect('/cart')
+            res.redirect('/products')
         })
         // -->error if no product
         .catch(err => { 
             console.log(err)
             res.json(err)
         })
+
+     })
+
+    
+
+
+    
+
+
+
+    router.delete(':id', (req,res) => {
+        const productId = req.params.id
+        const userId = req.session.userId
+
     })
 
 

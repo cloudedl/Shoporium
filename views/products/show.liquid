@@ -14,8 +14,8 @@
             <!-- assign a variable to qty and turn it into an integer -->
             {% assign productQty = product.qty | integer %}
             {% if productQty != 0 %}
-                <form action="/products/buy/{{product._id}}?_method=PUT" method="post">
-                    <input type="submit" value="Buy">
+            <form action="/cart/{{ product.id }}?_method=PUT" method="POST">
+                <input type="submit" value="Add to Cart">
                 </form>
             {% elsif productQty == 0 %}
                 <h3 style="color:red">Out of Stock</h3>

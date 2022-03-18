@@ -22,13 +22,19 @@ const UserSchema = new Schema(
 		}],
 		shipping:  {
 
-			name: {type: String, required: true},
-			address: {type: String, required: true},
-			city: {type: String, required: true},
-			state: {type: String, required: true},
-			postal: {type: Number, required: true},
-			phone: {type: Number, required: true}
-		}
+			name: {type: String, },
+			address: {type: String, },
+			city: {type: String, },
+			state: {type: String, },
+			postal: {type: Number,},
+			phone: {type: Number,}
+		},
+		previousOrders : 
+		[{ 
+			orderNumber: {type:String},
+			type: mongoose.Schema.Types.ObjectID,
+			ref: 'Product',
+		}],
 		
 	},
 	{ timestamps: true }

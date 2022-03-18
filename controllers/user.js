@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
 
 					console.log('session user id', req.session.userId)
 					// redirect to /examples if login is successful
-					res.redirect('/')
+					res.redirect('/products')
 				} else {
 					// send an error if the password doesnt match
 					res.redirect('/error?error=username%20or%20password%20incorrect')
@@ -91,7 +91,7 @@ router.post('/login', async (req, res) => {
 // logout route -> destroy the session
 router.get('/logout', (req, res) => {
 	req.session.destroy(() => {
-		res.redirect('/')
+		res.redirect('/products')
 	})
 })
 
@@ -106,7 +106,7 @@ router.put('/edit', (req,res) => {
 		// if successful redirect to products page for testing
 		.then((user) => {
 			console.log('did user update?', user)
-			res.redirect('/products')
+			res.redirect('/checkout/confirm')
 		})
 		.catch((error) => {
 			console.log('the error', error);

@@ -13,9 +13,14 @@
                 <a href="/products/{{product.id}}"><h3>{{product.name}}</h3></a>
                 <p>Description: {{product.description}}</p>
                 <p>${{product.price}}</p>
+                {% assign productQty = product.qty | integer %}
+                {% if productQty != 0 %}
                 <form action="/cart/{{ product.id }}?_method=PUT" method="POST">
-                <input type="submit" value="Add to Cart">
-                </form>
+                    <input type="submit" value="Add to Cart">
+                    </form>
+                {% elsif productQty == 0 %}
+                    <h3 style="color:red">Out of Stock</h3>
+                {% endif %}
                 <!-- <p>Inventory: {{product.qty}}</p> -->
 
             {% endfor %}

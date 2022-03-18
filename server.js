@@ -30,7 +30,7 @@ app.use('/checkout', CheckoutRouter)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session
-	res.render('index.liquid', { loggedIn, username, userId })
+	res.render('index', { loggedIn, username, userId })
 })
 
 app.get('/error', (req, res) => {
