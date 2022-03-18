@@ -95,5 +95,27 @@ router.get('/logout', (req, res) => {
 	})
 })
 
+// update user Shipping Details
+router.put('/edit', (req,res) => {
+
+	const userId = req.session.userId
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+
+	User.findByIdAndUpdate(userId, {shipping: req.body},{ new: true } )
+		// if successful redirect to products page for testing
+		.then((user) => {
+			console.log('did user update?', user)
+			res.redirect('/products')
+		})
+		.catch((error) => {
+			console.log('the error', error);
+			
+			res.redirect(`/error?error=${error}`)
+		})
+
+
+})
+
 // Export the Router
 module.exports = router

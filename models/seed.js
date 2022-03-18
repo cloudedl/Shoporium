@@ -41,7 +41,7 @@ db.on("open", () => {
         {
         name: 'Dark Reapers',
         description: 'A peerless long-ranged Heavy Support choice for your Aeldari army',
-        img: '/static/imgs/seedImgs/DarkReapers.webp' ,
+        img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104068_AELDarkReapersLead.jpg' ,
         price: 60 ,
         qty: 15 ,
         },

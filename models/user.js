@@ -19,7 +19,16 @@ const UserSchema = new Schema(
 		cartItems: [{ 
 			type: mongoose.Schema.Types.ObjectID,
 			ref: 'Product',
-		}]
+		}],
+		shipping:  {
+
+			name: {type: String, required: true},
+			address: {type: String, required: true},
+			city: {type: String, required: true},
+			state: {type: String, required: true},
+			postal: {type: Number, required: true},
+			phone: {type: Number, required: true}
+		}
 		
 	},
 	{ timestamps: true }
