@@ -107,6 +107,12 @@ router.get('/success' , (req,res) => {
     User.findById(userId)
     .then((user) => {
 
+        let orderNumber = 0
+        const randomNumber = () => {
+             orderNumber = 'a' + Math.floor(Math.random() * 1000000000)
+        }
+        randomNumber()
+
         //function for getting the total price of the items in the cart.
         let cartItems = user.cartItems
         let shipping = user.shipping
@@ -114,7 +120,7 @@ router.get('/success' , (req,res) => {
      
 
         console.log('this is the user data we grabbed', user)
-        res.render('checkout/success', {user, username, loggedIn, userId, cartItems, shipping, previousOrders})
+        res.render('checkout/success', {user, username, loggedIn, userId, cartItems, shipping, previousOrders, orderNumber})
 
     })
         // if there is an error, show that instead
@@ -140,18 +146,37 @@ router.put('/final', (req,res) => {
         //function for getting the total price of the items in the cart.
         let cartItems = user.cartItems
         let shipping = user.shipping
-        let orderNumber = 'a' + Math.floor(Math.random() * 1000000000)
+       
+      
 
-        User.findByIdAndUpdate(userId, {previousOrders: cartItems , new: true })
+       req.body.cartItems = user.cartItems
+       
+       console.log('what is req.body' , req.body)
+
+
+
+        User.findByIdAndUpdate(userId, {previousOrders: cartItems,  new: true})
             .then((user) => {
                 console.log('this is the user data we grabbed', user)
-                res.redirect('/checkout/success')
+                
+                
             })
             .catch((error) => {
                 console.log('the error', error);
                 
                 res.redirect(`/error?error=${error}`)
             })
+        
+        User.findByIdAndUpdate(userId, {cartItems: [], new:true})
+        .then((user) => {
+            console.log('this is the user data we grabbed', user)
+            res.redirect('/checkout/success')
+        })
+        .catch((error) => {
+            console.log('the error', error);
+            
+            res.redirect(`/error?error=${error}`)
+        })
     .catch((error) => {
         console.log('the error', error);
         
