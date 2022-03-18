@@ -29,8 +29,17 @@ router.get ('/', (req,res) => {
         .populate('cartItems')
         .then((user) => {
             let cartItems = user.cartItems
+            console.log('what is cartItems', cartItems[0].price)
+            let total = 0
+
+            for (let i = 0 ; i < cartItems.length ; i++) {
+
+                total += parseInt(cartItems[i].price)
+                
+                console.log('This is the total price of cartItems', total)
+            }
             console.log('this is the user data we grabbed', user)
-            res.render('cart/index', {user, username, loggedIn, userId, cartItems})
+            res.render('cart/index', {user, username, loggedIn, userId, cartItems, total})
 
         })
         	// if there is an error, show that instead

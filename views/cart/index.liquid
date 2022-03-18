@@ -1,17 +1,18 @@
 {% layout "layout.liquid" %}
 {% block content %}
 
-<!-- {{user.cartItems}} -->
-{{user.cartItems[0].name}}
-<!-- {{user.cartItems.product.name[1]}} -->
+
 
 {% for cartItems in cartItems %}
     <div>
-    {{cartItems.name}}
+    Name: {{cartItems.name}} </br>
+    Description: "{{cartItems.description}}" </br>
+    Price: {{cartItems.price}} </br>
     </div>
 
 {% endfor %}
 
+<h3>Total Price: ${{total}}</h3>
 
 
 
