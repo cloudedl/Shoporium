@@ -3,14 +3,14 @@
 
 <div>
     <h4>Shipping Details</h4>
-
+    <hr>
     Name: {{shipping.name}} </br>
     Address: {{shipping.address}} </br>
     City: {{shipping.city}} </br>
     State: {{shipping.state}} </br>
     Postal Code: {{shipping.postal}} </br>
     Phone Number: {{shipping.phone}} </br>
-
+    <hr>
 
 </div>
 
@@ -19,9 +19,11 @@
 
 {% for cartItems in cartItems %}
     <div>
+        <hr>
     Name: {{cartItems.name}} </br>
     Description: "{{cartItems.description}}" </br>
     Price: ${{cartItems.price}} </br>
+        <hr>
     </div>
 
 {% endfor %}

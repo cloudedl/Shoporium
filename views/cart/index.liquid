@@ -5,15 +5,21 @@
 
 {% for cartItems in cartItems %}
     <div>
-    Name: {{cartItems.name}} </br>
-    Description: "{{cartItems.description}}" </br>
-    Price: ${{cartItems.price}} </br>
+        <hr>
+    <strong>Name:</strong> {{cartItems.name}} |
+    <strong>Description:</strong> "{{cartItems.description}}" |
+    <strong>Price:</strong> ${{cartItems.price}}
+        <hr>
+    
     </div>
 
 {% endfor %}
 
 <h3>Total Price: ${{total}}</h3>
 
+<form action="/cart/emptyCart?_method=PUT" method="POST">
+    <input type="submit" value="Empty Cart" class="btn btn-danger">
+</form>
 <a href="/checkout/shipping"><button>Confirm Shipping</button></a>
 
 

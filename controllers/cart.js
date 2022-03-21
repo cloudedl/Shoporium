@@ -29,9 +29,19 @@ router.get ('/', (req,res) => {
     User.findById(userId)
         .populate('cartItems')
         .then((user) => {
+            let cartItems = user.cartItems
+            console.log('what is cartItems')
+            // if there are no items in the cart load the products index
+            if (cartItems == []) {
+                res.render('products/index',username, loggedIn, userId ) 
+            } 
+            // if there are items in the cart load the cart.
+            else {
+
+                console.log('is this else statement running?')
 
             //function for getting the total price of the items in the cart.
-            let cartItems = user.cartItems
+            
             console.log('what is cartItems', cartItems[0].price)
             let total = 0
             for (let i = 0 ; i < cartItems.length ; i++) {
@@ -39,8 +49,11 @@ router.get ('/', (req,res) => {
                 console.log('This is the total price of cartItems', total)
             }
 
+
+           
             console.log('this is the user data we grabbed', user)
             res.render('cart/index', {user, username, loggedIn, userId, cartItems, total})
+            }
 
         })
         	// if there is an error, show that instead
@@ -53,6 +66,38 @@ router.get ('/', (req,res) => {
 
 })
 
+// Final Checkout Route
+router.put('/emptyCart', (req,res) => {
+    const userId = req.session.userId
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    console.log('is this route being hit?')
+
+    User.findById(userId)
+    .then((user) => {
+
+        //function for getting the total price of the items in the cart.
+        let cartItems = user.cartItems
+
+               
+        User.findByIdAndUpdate(userId, {cartItems: [], new:true})
+        .then((user) => {
+            console.log('this is the user data we grabbed', user)
+            res.redirect('/products')
+        })
+        .catch((error) => {
+            console.log('the error', error);
+            
+            res.redirect(`/error?error=${error}`)
+        })
+    .catch((error) => {
+        console.log('the error', error);
+        
+        res.redirect(`/error?error=${error}`)
+    })
+})
+})
+
 // route for adding items to the cart
 router.put('/:id', (req, res) => {
 
@@ -62,19 +107,7 @@ router.put('/:id', (req, res) => {
     console.log('what is cart', User)
     console.log('what is the productId', productId)
 
-    
-    // Product.findById(productId)
-    // // then render a template AFTER they're found
-    // .then(product => {
-    //     console.log(product)
-    //     Product.findByIdAndUpdate(productId, { qty: product.qty - 1 }, { new: true })
-    //         })
-    //         // if an error, display that
-    //         .catch(err => {
-    //             console.log(err)
-    //             res.json({ err })
-    //         })
-    // })
+
     User.findById(userId)
         .then(user => {
             //send the product to the cartItems array
@@ -101,7 +134,6 @@ router.put('/:id', (req, res) => {
     
 
 
-    
 
 
 
@@ -110,6 +142,7 @@ router.put('/:id', (req, res) => {
         const userId = req.session.userId
 
     })
+
 
 
 
