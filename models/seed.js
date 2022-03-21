@@ -78,7 +78,7 @@ db.on("open", () => {
         description: 'Windriders are jetbike pilots completely in tune with their machines.',
         img: 'https://www.games-workshop.com/resources/catalog/product/920x950/99120104038_ELDARWINDRIDERS01.jpg',
         price: 55,
-        qty: 1
+        qty: 0
         },
         {
         name: 'Swooping Hawks',
