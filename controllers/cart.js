@@ -38,21 +38,21 @@ router.get ('/', (req,res) => {
             // if there are items in the cart load the cart.
             else {
 
-                console.log('is this else statement running?')
+                    console.log('is this else statement running?')
 
-            //function for getting the total price of the items in the cart.
-            
-            console.log('what is cartItems', cartItems[0].price)
-            let total = 0
-            for (let i = 0 ; i < cartItems.length ; i++) {
-                total += parseInt(cartItems[i].price)
-                console.log('This is the total price of cartItems', total)
-            }
+                //function for getting the total price of the items in the cart.
+                
+                console.log('what is cartItems', cartItems[0].price)
+                let total = 0
+                for (let i = 0 ; i < cartItems.length ; i++) {
+                    total += parseInt(cartItems[i].price)
+                    console.log('This is the total price of cartItems', total)
+                }
 
 
            
-            console.log('this is the user data we grabbed', user)
-            res.render('cart/index', {user, username, loggedIn, userId, cartItems, total})
+                console.log('this is the user data we grabbed', user)
+                res.render('cart/index', {user, username, loggedIn, userId, cartItems, total})
             }
 
         })
@@ -66,7 +66,7 @@ router.get ('/', (req,res) => {
 
 })
 
-// Final Checkout Route
+// Empty entire cart
 router.put('/emptyCart', (req,res) => {
     const userId = req.session.userId
     const username = req.session.username
@@ -76,7 +76,7 @@ router.put('/emptyCart', (req,res) => {
     User.findById(userId)
     .then((user) => {
 
-        //function for getting the total price of the items in the cart.
+    
         let cartItems = user.cartItems
 
                

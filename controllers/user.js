@@ -126,16 +126,16 @@ router.get('/user', (req, res) => {
     const loggedIn = req.session.loggedIn
 
     User.findById(userId)
-    
+    .populate('previousOrders')
     .then((user) => {
 
         //function for getting the total price of the items in the cart.
         
         let shipping = user.shipping
+		let previousOrders = user.previousOrders
        
-
         console.log('this is the user data we grabbed', user)
-        res.render('auth/userIndex', {user, username, loggedIn, userId, shipping })
+        res.render('auth/userIndex', {user, username, loggedIn, userId, shipping, previousOrders})
 
     })
         // if there is an error, show that instead

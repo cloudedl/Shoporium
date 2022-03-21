@@ -16,4 +16,19 @@
 
 </div>
 
+<hr>
+
+<h4>Last Order</h4>
+{% for previousOrders in previousOrders %}
+    <div>
+        <hr>
+    <strong>Name:</strong> {{previousOrders.name}} |
+    <strong>Description:</strong> "{{previousOrders.description}}" |
+    <strong>Price:</strong> ${{previousOrders.price}}
+        <hr>
+    
+    </div>
+
+{% endfor %}
+
 {% endblock %}
