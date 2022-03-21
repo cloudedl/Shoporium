@@ -10,14 +10,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
-                <a href="/examples" class="nav-link text-light">View All</a>
-                <a href="/examples/new" class="nav-link text-light">New</a>
-                <a href="/examples/mine" class="nav-link text-light">My Examples</a>
+                <a href="/products" class="nav-link text-light">Home</a>
+                <a href="/auth/account" class="nav-link text-light"><i class="fa-solid fa-user"></i></a>
+                <!-- <a href="/products" class="nav-link text-light">Store Page</a> -->
                 <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></i></a>
             {% else %}
                 <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
                 <a href="/auth/login" class="nav-link text-light">Sign In</a>
+                <a href="/cart"><i class="bi bi-cart2"></i></a>
             {% endif %}
+            
         </div>
     </div>
 </nav>

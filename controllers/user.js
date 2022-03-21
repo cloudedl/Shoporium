@@ -60,7 +60,7 @@ router.post('/login', async (req, res) => {
 
 				if (result) {
 					console.log('the user', user);
-
+					
 					// store some properties in the session
 					req.session.username = user.username
 					req.session.loggedIn = true
@@ -69,8 +69,8 @@ router.post('/login', async (req, res) => {
           			const { username, loggedIn, userId } = req.session
 
 					console.log('session user id', req.session.userId)
-					// redirect to /shop if login is successful
-					res.redirect('/')
+					// redirect to /examples if login is successful
+					res.redirect('/products')
 				} else {
 					// send an error if the password doesnt match
 					res.redirect('/error?error=username%20or%20password%20incorrect')
@@ -91,8 +91,30 @@ router.post('/login', async (req, res) => {
 // logout route -> destroy the session
 router.get('/logout', (req, res) => {
 	req.session.destroy(() => {
-		res.redirect('/')
+		res.redirect('/products')
 	})
+})
+
+// update user Shipping Details
+router.put('/edit', (req,res) => {
+
+	const userId = req.session.userId
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+
+	User.findByIdAndUpdate(userId, {shipping: req.body},{ new: true } )
+		// if successful redirect to products page for testing
+		.then((user) => {
+			console.log('did user update?', user)
+			res.redirect('/checkout/confirm')
+		})
+		.catch((error) => {
+			console.log('the error', error);
+			
+			res.redirect(`/error?error=${error}`)
+		})
+
+
 })
 
 // Export the Router

@@ -1,0 +1,32 @@
+{% layout "layout.liquid" %}
+{% block content %}
+
+
+<form action="/checkout/edit?_method=PUT" method="POST">
+    <fieldset>
+        <label>Name:</label>
+        <input type="text" name="name" value="{{shipping.name}}" placeholder="Your Name"></br>
+        <label>Street Address:</label>
+        <input type="text" name="address" value="{{shipping.address}}" placeholder="Street Address"></br>
+        <label>City:</label>
+        <input type="text" name="city" value="{{shipping.city}}" placeholder="city"></br>
+        <label>State:</label>
+        <input type="text" name="state" value="{{shipping.state}}" placeholder="state"></br>
+        <label>Postal Code:</label>
+        <input type="text" name="postal" value="{{shipping.postal}}" placeholder="postal code"></br>
+        <label>Phone Number:</label>
+        <input type="text" name="phone" value="{{shipping.phone}}" placeholder="Phone Number"></br>
+ 
+
+
+    </fieldset>
+    <input type="submit" value="Next">
+
+
+
+
+</form>
+
+    
+
+{% endblock %}

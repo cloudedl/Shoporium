@@ -1,0 +1,21 @@
+{% layout "layout.liquid" %}
+{% block content %}
+
+
+
+{% for cartItems in cartItems %}
+    <div>
+    Name: {{cartItems.name}} </br>
+    Description: "{{cartItems.description}}" </br>
+    Price: ${{cartItems.price}} </br>
+    </div>
+
+{% endfor %}
+
+<h3>Total Price: ${{total}}</h3>
+
+<a href="/checkout/shipping"><button>Confirm Shipping</button></a>
+
+
+
+{% endblock %}
