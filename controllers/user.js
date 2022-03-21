@@ -4,6 +4,7 @@
 const express = require('express')
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const { append } = require('express/lib/response')
 
 ////////////////////////////////////////////
 // Create router
@@ -116,6 +117,38 @@ router.put('/edit', (req,res) => {
 
 
 })
+
+
+router.get('/user', (req, res) => {
+
+    const userId = req.session.userId
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+
+    User.findById(userId)
+    
+    .then((user) => {
+
+        //function for getting the total price of the items in the cart.
+        
+        let shipping = user.shipping
+       
+
+        console.log('this is the user data we grabbed', user)
+        res.render('auth/userIndex', {user, username, loggedIn, userId, shipping })
+
+    })
+        // if there is an error, show that instead
+    .catch((err) => {
+        console.log(err)
+        res.json({ err })
+    })
+
+
+
+})
+
+
 
 // Export the Router
 module.exports = router

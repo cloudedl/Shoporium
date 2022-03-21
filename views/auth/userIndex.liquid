@@ -1,0 +1,19 @@
+{% layout "layout.liquid" %}
+{% block content %}
+
+<h3>Hello {{username}}</h3>
+
+<div>
+    <h4>Shipping Details</h4>
+    <hr>
+    Name: {{shipping.name}} </br>
+    Address: {{shipping.address}} </br>
+    City: {{shipping.city}} </br>
+    State: {{shipping.state}} </br>
+    Postal Code: {{shipping.postal}} </br>
+    Phone Number: {{shipping.phone}} </br>
+    <hr>
+
+</div>
+
+{% endblock %}
