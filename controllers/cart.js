@@ -6,8 +6,7 @@ const { append } = require('express/lib/response')
 const mongoose = require('mongoose')
 const User = require('../models/user')
 
-// we need our Fruit MODEL because comments are ONLY a schema
-// so we'll run queries on fruits, and add in comments
+// we need our product model
 const Product = require('../models/products')
 
 ////////////////////////////////////////////
