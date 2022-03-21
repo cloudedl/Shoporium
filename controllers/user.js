@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
           			const { username, loggedIn, userId } = req.session
 
 					console.log('session user id', req.session.userId)
-					// redirect to /examples if login is successful
+					// redirect to /products if login is successful
 					res.redirect('/products')
 				} else {
 					// send an error if the password doesnt match
@@ -118,7 +118,7 @@ router.put('/edit', (req,res) => {
 
 })
 
-
+// user home page 
 router.get('/user', (req, res) => {
 
     const userId = req.session.userId
@@ -129,7 +129,7 @@ router.get('/user', (req, res) => {
     .populate('previousOrders')
     .then((user) => {
 
-        //function for getting the total price of the items in the cart.
+        
         
         let shipping = user.shipping
 		let previousOrders = user.previousOrders

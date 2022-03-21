@@ -136,17 +136,6 @@ router.put('/:id', (req, res) => {
 
 
 
-    router.delete(':id', (req,res) => {
-        const productId = req.params.id
-        const userId = req.session.userId
-
-    })
-
-
-
-
-
-
 ////////////////////////////////////////////
 // Export the Router
 ////////////////////////////////////////////
