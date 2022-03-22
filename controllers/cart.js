@@ -57,8 +57,9 @@ router.get ('/', (req,res) => {
         })
         	// if there is an error, show that instead
 		.catch((err) => {
-			console.log(err)
-			res.json({ err })
+			// console.log(err)
+			// res.json({ err })
+            res.render('cart/empty')
 		})
 
 
